@@ -1,11 +1,11 @@
 {
-  "name": "data-mgt-system-sb",
+  "name": "tn3pr-stack",
   "version": "0.0.1",
   "private": true,
   "scripts": {
     "build": "turbo build",
     "dev": "turbo dev",
-    "web:dev": "dev --filter web",
+    "web:dev": "pnpm dev --filter web",
     "backend:start": "cd apps/backend && pnpm start:dev",
     "db:sync": "cd packages/database && npx prisma db push",
     "db:generate": "cd packages/database && npx prisma generate",
