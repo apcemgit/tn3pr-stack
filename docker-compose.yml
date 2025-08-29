@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15
+    container_name: data-mgt-system-sb-postgres-prod
+    environment:
+      # It is recommended to use a more secure way to handle passwords in production
+      # such as using Docker secrets or environment files.
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres # Replace with a strong password
+      POSTGRES_DB: data_mgt_system_prod
+    ports:
+      - '5433:5432' # Use a different port to avoid conflicts with dev
+    volumes:
+      - postgres_data_prod:/var/lib/postgresql/data
+    # restart: always # Uncomment for production
+    networks:
+      - prod_network
+
+  redis:
+    image: redis:7
+    container_name: data-mgt-system-sb-redis-prod
+    ports:
+      - '6380:6379' # Use a different port to avoid conflicts with dev
+    volumes:
+      - redis_data_prod:/data
+    # restart: always # Uncomment for production
+    networks:
+      - prod_network
+
+volumes:
+  postgres_data_prod:
+  redis_data_prod:
+
+networks:
+  prod_network:

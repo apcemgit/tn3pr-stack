@@ -1,10 +1,16 @@
 {
-  "name": "shadcn-ui-monorepo",
+  "name": "data-mgt-system-sb",
   "version": "0.0.1",
   "private": true,
   "scripts": {
     "build": "turbo build",
     "dev": "turbo dev",
+    "web:dev": "dev --filter web",
+    "backend:start": "cd apps/backend && pnpm start:dev",
+    "db:sync": "cd packages/database && npx prisma db push",
+    "db:generate": "cd packages/database && npx prisma generate",
+    "db:studio": "cd packages/database && npx prisma studio",
+    "db:seed": "cd packages/database && npx prisma seed",
     "lint": "turbo lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
